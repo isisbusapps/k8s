@@ -12,7 +12,7 @@
 ## How to update the kubernetes image
 1. Make sure your kube config context is set to the management cluster that manages the cluster you are trying to update: for example if updating the a dev cluster- you will need to point to a dev-management, if updating a dev-management you will need to point to a dev-management
 2. Go to the appropriate folder and change the values `kubernetesVersion` and `machineImage` in the `user-values.yaml` to the new image version. To find out all the new images that are available please check https://openstack.stfc.ac.uk/project/images
-	*  For example of upgrading to version 1.32.4
+	*  For example if upgrading to version 1.32.4
 	* Set `kubernetesVersion` to 1.32.4
 	* Set `machineImage` to `capi-ubuntu-2204-kube-v1.32.4-2025-05-02`
 	* **Don't jump major versions if not on the latest path**
