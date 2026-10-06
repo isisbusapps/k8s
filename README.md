@@ -17,7 +17,15 @@
 	* Set `machineImage` to `capi-ubuntu-2204-kube-v1.32.4-2025-05-02`
 	* **Don't jump major versions if not on the latest path**
 3. More info can be found [here](https://stfc.atlassian.net/wiki/spaces/CLOUDKB/pages/285704256/Cluster+API+Upgrade#Kubernetes-Image-and-Version-Upgrades)
-4. Find out the name of the cluster you are upgrading (to find out the name run `helm list -n clusters` and look for the name that is the closest to the one you are upgrading. So for example prod cluster can be called `prod-v4`)
-5. Export the name by using `export CLUSTER_NAME=<name of the cluster>`
-6. After the config is updated simple run `helm upgrade` command `helm upgrade $CLUSTER_NAME capi/openstack-cluster --install -f values.yaml -f clouds.yaml -f user-values.yaml -f flavors.yaml -n clusters
-7. Wait around 30 minutes and the cluster should be updated
+4. If you don't already have helm locally:
+```
+helm repo add capi https://azimuth-cloud.github.io/capi-helm-charts
+helm repo update
+```
+5. Find out the name of the cluster you are upgrading (to find out the name run `helm list -n clusters` and look for the name that is the closest to the one you are upgrading. So for example prod cluster can be called `prod-v4`)
+6. Export the name by using `export CLUSTER_NAME=<name of the cluster>`
+7. After the config is updated simple run helm upgrade command
+```
+helm upgrade $CLUSTER_NAME capi/openstack-cluster --install -f values.yaml -f clouds.yaml -f user-values.yaml -f flavors.yaml -n clusters
+```
+8. Wait around 30 minutes and the cluster should be updated
